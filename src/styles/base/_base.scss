@@ -1,14 +1,11 @@
 * {
-  font-family: Helvetica, Arial, sans-serif;
-  margin: 0px;
+  font-family: Roboto, sans-serif;
+  margin: 0;
 }
-
+html,
 body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-html {
-  height: -webkit-fill-available;
+  height: 100vh;
+  width: 100vw;
 }
 main {
   width: 100%;
@@ -17,19 +14,30 @@ main {
 .mt-1 {
   margin-top: 5px;
 }
-
+#root {
+  height: 100vh;
+}
+.mt-2 {
+  margin-top: 8px;
+}
 .mt-5 {
   margin-top: 20px;
 }
-
 .mb-1 {
   margin-bottom: 5px;
 }
-
 .mb-5 {
   margin-bottom: 20px;
 }
-
+.m-4 {
+  margin: 15px;
+}
 .pointer {
   cursor: pointer;
+}
+.text-center {
+  text-align: center;
+}
+.text-red {
+  color: rgb(228, 59, 59);
 }
