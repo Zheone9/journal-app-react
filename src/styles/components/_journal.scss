@@ -27,7 +27,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 30px;
   width: 100%;
   transition: color 0.2s ease;
   &:hover {
@@ -58,11 +57,11 @@
 }
 .journal__entry-title {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1.1rem;
 }
 
 .journal__entry-content {
-  font-size: 10px;
+  font-size: 0.8rem;
 }
 
 .journal__entry-date-box {
