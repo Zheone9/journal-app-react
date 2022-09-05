@@ -19,6 +19,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import { login } from "../actions/auth";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import TestViewHeight from "../components/TestViewHeight";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
@@ -40,10 +41,6 @@ const AppRouter = () => {
 
   // const isLoading = useLoading();
 
-  if (checking) {
-    return <LoadingScreen />;
-  }
-
   return (
     <Router>
       <Routes>
@@ -56,11 +53,11 @@ const AppRouter = () => {
         <Route
           path="auth"
           element={
-            <PublicRoute isLoggedIn={isLoggedIn} element={<AuthMain />} />
+            <PublicRoute isLoggedIn={isLoggedIn} element={<TestViewHeight />} />
           }
         >
           <Route index element={<Navigate to="login" />} />
-          <Route path="login" element={<LoginScreen />} />
+          <Route path="login" element={<TestViewHeight />} />
           <Route path="register" element={<RegisterScreen />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace={true} />} />

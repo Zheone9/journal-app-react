@@ -26,44 +26,45 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="text-center ">
-      <h3 className="auth__title">Login</h3>
-      <form onSubmit={handleLogin}>
-        <input
-          className="auth__input"
-          type="text"
-          name="email"
-          placeholder="Email"
-          autoComplete="none"
-          value={email}
-          onChange={handleInputChange}
-        />
-        <input
-          className="auth__input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-        />
-        <button
-          disabled={loading}
-          style={{ cursor: loading ? "not-allowed" : "pointer" }}
-          className="btn btn-primary btn-block"
-          type="submit"
-          onClick={() => handleGoogleLogin}
-        >
-          <b>Login</b>
-        </button>
+    <></>
+    // <div className="text-center ">
+    //   <h3 className="auth__title">Login</h3>
+    //   <form onSubmit={handleLogin}>
+    //     <input
+    //       className="auth__input"
+    //       type="text"
+    //       name="email"
+    //       placeholder="Email"
+    //       autoComplete="none"
+    //       value={email}
+    //       onChange={handleInputChange}
+    //     />
+    //     <input
+    //       className="auth__input"
+    //       type="password"
+    //       name="password"
+    //       placeholder="Password"
+    //       value={password}
+    //       onChange={handleInputChange}
+    //     />
+    //     <button
+    //       disabled={loading}
+    //       style={{ cursor: loading ? "not-allowed" : "pointer" }}
+    //       className="btn btn-primary btn-block"
+    //       type="submit"
+    //       onClick={() => handleGoogleLogin}
+    //     >
+    //       <b>Login</b>
+    //     </button>
 
-        <div className="auth__social-network">
-          <GoogleButton onClick={() => handleGoogleLogin()} />
-        </div>
-        <Link className="link" to="/auth/register">
-          Create new account
-        </Link>
-      </form>
-    </div>
+    //     <div className="auth__social-network">
+    //       <GoogleButton onClick={() => handleGoogleLogin()} />
+    //     </div>
+    //     <Link className="link" to="/auth/register">
+    //       Create new account
+    //     </Link>
+    //   </form>
+    // </div>
   );
 };
 
