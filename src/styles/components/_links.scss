@@ -1,0 +1,8 @@
+.link {
+  color: $primary;
+  text-decoration: none;
+  &:hover {
+    color: darken($color: $primary, $amount: 10);
+  }
+  transition: all 0.3s ease;
+}
