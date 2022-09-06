@@ -12,6 +12,9 @@
   padding: 10px 20px 15px 20px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  span {
+    padding-left: 40px;
+  }
 }
 .notes__content {
   display: flex;

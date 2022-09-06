@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import NotesScreen from "../notes/NotesScreen";
 import NothingSelected from "./NothingSelected";
-import Sidebar from "./Sidebar";
+import SidebarPro from "./SidebarPro";
 
 const JournalScreen = () => {
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
-    <div className="journal__main-content">
-      <Sidebar />
-      <main>
-        {/* <NotesScreen /> */}
-        <NothingSelected />
-      </main>
-    </div>
+    <>
+      <div onClick={handleToggle} className="btn-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div className="journal__main-content">
+        <SidebarPro toggle={toggle} setToggle={setToggle} />
+        <main>
+          <NotesScreen />
+          {/* <NothingSelected /> */}
+        </main>
+      </div>
+    </>
   );
 };
 

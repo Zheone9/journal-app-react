@@ -3,7 +3,7 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 1.01rem;
   padding: 7px 10px 7px 10px;
   &:focus {
     outline: none;
@@ -11,7 +11,7 @@
 
   transition: color 0.3s ease;
   &:hover {
-    color: darken($color: white, $amount: 10);
+    color: darken($color: white, $amount: 16);
   }
 }
 .btn-primary {

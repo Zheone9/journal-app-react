@@ -1,26 +1,23 @@
 .journal__main-content {
   display: flex;
+  height: 100vh;
 }
 
 .journal__sidebar {
-  background-color: $dark-grey;
   color: white;
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding-left: 10px;
   padding-right: 10px;
-  width: 450px;
-
-  .journal__sidebar-navbar {
-    display: flex;
-    justify-content: space-between;
-    h3 {
-      font-weight: lighter;
-    }
+  // width: 450px;
+}
+.journal__sidebar-header {
+  padding: 7px;
+  span {
+    font-size: 1.1rem;
   }
 }
-
 .journal__new-entry {
   align-items: center;
   cursor: pointer;
@@ -38,18 +35,25 @@
   flex: 1 1 auto;
   overflow-y: scroll;
 }
+.journal__sidebar-name {
+  margin: 10px;
+}
+.text-red {
+  color: $red;
+}
 .journal__entry {
   background-color: white;
-
   border-radius: 4px;
   color: $dark-grey;
   display: flex;
   margin-bottom: 10px;
   overflow: hidden;
 }
-
+.journal__sidebar-welcome {
+  padding-top: 7px;
+}
 .journal__entry-picture {
-  height: 90px;
+  height: 102px;
   width: 75px;
 }
 .journal__entry-body {
@@ -71,4 +75,47 @@
   justify-content: center;
   padding: 5px;
   font-size: 12px;
+}
+
+.d-flex {
+  display: flex;
+}
+.btn-toggle {
+  display: none;
+  padding: 14px;
+}
+.journal__sidebar-top {
+  display: flex;
+  justify-content: end;
+}
+.fa-bars {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: $dark-grey;
+  color: white;
+  border-radius: 60px;
+}
+
+//make responsive bars
+@media (max-width: 768px) {
+  .btn-toggle {
+    position: absolute;
+    top: -3px;
+    max-width: 0px;
+    display: block;
+  }
+}
+.fa-right-from-bracket {
+  transition: color 0.3s ease;
+  font-size: 1.8rem;
+  &:hover {
+    color: darken($color: $red, $amount: 10);
+  }
+}
+.journal__sidebar-navbar {
+  margin: 15px;
+}
+.journal__sidebar-header {
+  display: flex;
+  justify-content: space-around;
 }
