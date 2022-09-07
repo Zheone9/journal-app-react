@@ -1,13 +1,134 @@
 .nothing__main-content {
   align-items: center;
-  background-color: $primary;
+  background: linear-gradient(
+      rgba(255, 255, 255, 1) 0%,
+      rgba(251, 251, 251, 0.1) 100%
+    ),
+    linear-gradient(90deg, #84d2ff, #8d5acd);
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
 
-  p {
-    text-align: center;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  * {
+    font-size: 14px;
+  }
+  .nothing__main-content {
+    h1 {
+      font-size: 3em;
+    }
+  }
+}
+@media (min-width: 1280px) {
+  * {
+    font-size: 16px;
+  }
+  .nothing__main-content {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1536px) {
+  * {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1792px) {
+  * {
+    font-size: 20px;
+  }
+}
+@media (min-width: 2048px) {
+  * {
+    font-size: 22px;
+  }
+}
+@media (min-width: 2304px) {
+  * {
+    font-size: 24px;
+  }
+}
+@media (min-width: 2560px) {
+  * {
+    font-size: 26px;
+  }
+}
+@media (min-width: 2816px) {
+  * {
+    font-size: 28px;
+  }
+}
+@media (min-width: 3072px) {
+  * {
+    font-size: 30px;
+  }
+}
+@media (min-width: 3328px) {
+  * {
+    font-size: 32px;
+  }
+}
+@media (min-width: 3584px) {
+  * {
+    font-size: 34px;
+  }
+}
+@media (min-width: 3840px) {
+  * {
+    font-size: 36px;
+  }
+}
+@media (min-width: 4096px) {
+  * {
+    font-size: 38px;
+  }
+}
+@media (min-width: 4352px) {
+  * {
+    font-size: 40px;
+  }
+}
+@media (min-width: 4608px) {
+  * {
+    font-size: 42px;
+  }
+}
+@media (min-width: 4864px) {
+  * {
+    font-size: 44px;
+  }
+}
+@media (min-width: 5120px) {
+  * {
+    font-size: 46px;
+  }
+}
+@media (min-width: 5376px) {
+  * {
+    font-size: 48px;
+  }
+}
+@media (min-width: 5632px) {
+  * {
+    font-size: 50px;
+  }
+}
+@media (min-width: 5888px) {
+  * {
+    font-size: 52px;
+  }
+}
+@media (min-width: 6144px) {
+  * {
+    font-size: 54px;
+  }
+}
+@media (min-width: 6400px) {
+  * {
+    font-size: 56px;
   }
 }

@@ -21,7 +21,7 @@ const LoginScreen = () => {
     e.preventDefault();
     dispatch(startLoginEmailPassword(email, password));
   };
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = (e) => {
     dispatch(startGoogleLogin());
   };
 

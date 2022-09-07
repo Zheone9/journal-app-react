@@ -7,10 +7,14 @@ import {
 } from "react-pro-sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
+import { startNewNote } from "../../actions/notes";
+import { toggleSidebar } from "../../actions/sidebar";
+import { types } from "../../types/types";
 import JournalEntries from "./JournalEntries";
 
-const SidebarPro = ({ toggle, setToggle }) => {
+const SidebarPro = () => {
   const { name } = useSelector((state) => state.auth);
+  const { toggled } = useSelector((state) => state.sidebar);
 
   const dispatch = useDispatch();
 
@@ -22,7 +26,10 @@ const SidebarPro = ({ toggle, setToggle }) => {
 
     divOverlay.addEventListener("click", overlay);
     function overlay() {
-      setToggle(false);
+      dispatch({
+        type: types.sidebarToggle,
+        payload: false,
+      });
     }
 
     return () => {
@@ -30,21 +37,23 @@ const SidebarPro = ({ toggle, setToggle }) => {
     };
   }, []);
 
+  const handleAddEntry = () => {
+    dispatch(startNewNote());
+  };
+
   return (
-    <ProSidebar breakPoint="sm" toggled={toggle}>
+    <ProSidebar breakPoint="sm" toggled={toggled}>
       <SidebarHeader>
         <div className="journal__sidebar-navbar">
           <div className="journal__sidebar-header">
-            <div>
-              <span className="journal__sidebar-name">
-                <i class="fa-solid fa-user"></i>
-              </span>
+            <div className="journal__sidebar-header-name">
+              <i className="fa-solid fa-user"></i>
               {name}
             </div>
 
             <div onClick={handleLogout}>
               <span className="text-red" style={{ cursor: "pointer" }}>
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <i className="fa-solid fa-right-from-bracket"></i>
               </span>
             </div>
           </div>
@@ -52,7 +61,7 @@ const SidebarPro = ({ toggle, setToggle }) => {
       </SidebarHeader>
       <SidebarContent>
         <aside className="journal__sidebar">
-          <div className="journal__new-entry mt-5">
+          <div className="journal__new-entry mt-5" onClick={handleAddEntry}>
             <i className="far fa-calendar-plus fa-5x"></i>
             <p className="mt-2">New entry</p>
           </div>

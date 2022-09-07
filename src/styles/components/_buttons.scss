@@ -1,9 +1,11 @@
 .btn {
   background-color: transparent;
-  border: none;
+  border: 1px solid white;
+  border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: 1.01rem;
+  margin-left: 6px;
   padding: 7px 10px 7px 10px;
   &:focus {
     outline: none;
@@ -29,4 +31,13 @@
 
 .btn-block {
   width: 100%;
+}
+
+.btn-danger {
+  color: white;
+  border-color: $red;
+  background-color: $red;
+  &:hover {
+    color: darken($color: white, $amount: 12);
+  }
 }

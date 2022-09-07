@@ -1,27 +1,40 @@
 import React from "react";
+import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { activeNote } from "../../actions/notes";
+import { types } from "../../types/types";
 
-const JournalEntry = () => {
+const JournalEntry = ({ note }) => {
+  const noteDate = moment(note.date);
+  const dispatch = useDispatch();
+  const { toggled } = useSelector((state) => state.sidebar);
+
+  const handleEntryClick = () => {
+    dispatch(activeNote(note.id, note));
+
+    if (toggled) {
+      dispatch({ type: types.sidebarToggle, payload: false });
+    }
+  };
   return (
-    <div className="journal__entry">
-      <div
-        className="journal__entry-picture "
-        style={{
-          backgroundColor: "cover",
-          backgroundImage:
-            "url(https://as1.ftcdn.net/v2/jpg/03/79/97/34/1000_F_379973463_gJgF0IC4RikGizVILFrF0lwXBaAxh56E.jpg)",
-        }}
-      ></div>
+    <div className="journal__entry" onClick={handleEntryClick}>
+      {note.url && (
+        <div
+          className="journal__entry-picture "
+          style={{
+            backgroundColor: "cover",
+            backgroundImage: `url(${note.url})`,
+          }}
+        ></div>
+      )}
       <div className="journal__entry-body">
-        <p className="journal__entry-title">Nuevo dia</p>
+        <p className="journal__entry-title"> {note.title}</p>
 
-        <p className="journal__entry-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cum
-          suscipit
-        </p>
+        <p className="journal__entry-content">{note.body}</p>
       </div>
       <div className="journal__entry-date-box">
-        <span>Monday</span>
-        <h4>28</h4>
+        <span>{noteDate.format("dddd")}</span>
+        <h4>{noteDate.format("Do")}</h4>
       </div>
     </div>
   );

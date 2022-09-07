@@ -1,26 +1,26 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSidebar } from "../../actions/sidebar";
 import NotesScreen from "../notes/NotesScreen";
 import NothingSelected from "./NothingSelected";
 import SidebarPro from "./SidebarPro";
 
 const JournalScreen = () => {
-  const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
+  const { toggled } = useSelector((state) => state.sidebar);
 
   const handleToggle = () => {
-    setToggle(!toggle);
+    dispatch(toggleSidebar(!toggled));
   };
-
+  const { active } = useSelector((state) => state.notes);
   return (
     <>
       <div onClick={handleToggle} className="btn-toggle">
-        <i class="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars"></i>
       </div>
       <div className="journal__main-content">
-        <SidebarPro toggle={toggle} setToggle={setToggle} />
-        <main>
-          <NotesScreen />
-          {/* <NothingSelected /> */}
-        </main>
+        <SidebarPro />
+        <main>{active ? <NotesScreen /> : <NothingSelected />}</main>
       </div>
     </>
   );

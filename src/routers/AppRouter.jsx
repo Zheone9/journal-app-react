@@ -10,35 +10,41 @@ import {
 import JournalScreen from "../components/journal/JournalScreen";
 
 import { auth } from "../firebase/firebase-config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoginScreen from "../components/auth/LoginScreen";
 import RegisterScreen from "../components/auth/RegisterScreen";
 import AuthMain from "../components/auth/AuthMain";
-import { useLoading } from "../hooks/useLoading";
 import LoadingScreen from "../components/LoadingScreen";
 import { login } from "../actions/auth";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
+import { startLoadingNotes } from "../actions/notes";
+
 const AppRouter = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { notes } = useSelector((state) => state.notes);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
+        dispatch(startLoadingNotes(user.uid));
         setIsLoggedIn(true);
-        setChecking(false);
       } else {
         setIsLoggedIn(false);
+        setChecking(false);
       }
-      setChecking(false);
     });
   }, [dispatch, setChecking, setIsLoggedIn]);
 
-  // const isLoading = useLoading();
+  useEffect(() => {
+    if (notes) {
+      setChecking(false);
+    }
+  }, [notes]);
 
   if (checking) {
     return <LoadingScreen />;
@@ -50,7 +56,11 @@ const AppRouter = () => {
         <Route
           path="/"
           element={
-            <PrivateRoute isLoggedIn={isLoggedIn} element={<JournalScreen />} />
+            <PrivateRoute
+              isLoggedIn={isLoggedIn}
+              element={<JournalScreen />}
+              notes={!isLoggedIn ? [] : notes}
+            />
           }
         />
         <Route

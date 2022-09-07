@@ -42,12 +42,15 @@ export const startRegisterWithEmailAndPasswordName = (
 //Get the uid and username of the user when logged in
 export const startGoogleLogin = () => {
   return (dispatch) => {
-    signInWithPopup(
-      auth,
-      googleAuthProvider
-    ).then(({ user: { uid, displayName } }) =>
-      dispatch(login(uid, displayName))
-    );
+    signInWithPopup(auth, googleAuthProvider)
+      .then(({ user: { uid, displayName } }) =>
+        dispatch(login(uid, displayName))
+      )
+      .catch((e) => {
+        Swal.fire({
+          title: `${e}`,
+        });
+      });
   };
 };
 
