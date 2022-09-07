@@ -51,6 +51,7 @@
   margin-bottom: 10px;
   overflow: hidden;
   transition: font-family 0.2ms;
+  max-height: 200px;
   &:hover {
     cursor: pointer;
     transform: scale(1.01);

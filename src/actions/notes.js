@@ -10,6 +10,7 @@ import { db } from "../firebase/firebase-config";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from "../types/types";
 import Swal from "sweetalert2";
+import { fileUpload } from "../helpers/fileUpload";
 
 export const startNewNote = () => {
   return (dispatch) => {
@@ -54,6 +55,7 @@ export const startSaveNote = (note) => {
     }
     const noteToFirestore = { ...note };
     delete noteToFirestore.id;
+    noteToFirestore.date = new Date().getTime();
 
     try {
       const currentNote = await getDoc(
@@ -126,6 +128,7 @@ export const startDeleteNote = (noteId) => {
 
     try {
       await deleteDoc(doc(db, `${uid}/journal/notes/${noteId}`));
+
       dispatch(deleteNote(noteId));
       Swal.fire({
         title: "Note deleted!",
@@ -151,5 +154,14 @@ export const deleteNote = (id) => {
         date: new Date().getTime(),
       },
     },
+  };
+};
+
+export const startUploading = (file) => {
+  return async (dispatch, getState) => {
+    const { active } = getState().notes;
+    const fileUrl = await fileUpload(file);
+
+    console.log(fileUrl);
   };
 };

@@ -41,3 +41,13 @@
     color: darken($color: white, $amount: 12);
   }
 }
+
+.disabled {
+  color: lighten($color: $dark-grey, $amount: 56);
+  border: 1px solid lighten($color: $dark-grey, $amount: 56);
+  cursor: default;
+  transition: none;
+  &:hover {
+    color: lighten($color: $dark-grey, $amount: 56);
+  }
+}

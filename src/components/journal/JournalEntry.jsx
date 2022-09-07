@@ -8,6 +8,7 @@ const JournalEntry = ({ note }) => {
   const noteDate = moment(note.date);
   const dispatch = useDispatch();
   const { toggled } = useSelector((state) => state.sidebar);
+  const { active } = useSelector((state) => state.notes);
 
   const handleEntryClick = () => {
     dispatch(activeNote(note.id, note));
@@ -17,7 +18,12 @@ const JournalEntry = ({ note }) => {
     }
   };
   return (
-    <div className="journal__entry" onClick={handleEntryClick}>
+    <div
+      className={
+        note.id === active?.id ? "journal__entry note-active" : "journal__entry"
+      }
+      onClick={handleEntryClick}
+    >
       {note.url && (
         <div
           className="journal__entry-picture "

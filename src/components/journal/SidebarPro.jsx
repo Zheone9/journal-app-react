@@ -39,6 +39,10 @@ const SidebarPro = () => {
 
   const handleAddEntry = () => {
     dispatch(startNewNote());
+    dispatch({
+      type: types.sidebarToggle,
+      payload: false,
+    });
   };
 
   return (

@@ -27,7 +27,7 @@ const NotesScreen = () => {
 
   return (
     <div className="notes__main-content">
-      <NotesAppBar />
+      <NotesAppBar title={title} body={body} />
       <div className="notes__content">
         <input
           type="text"
