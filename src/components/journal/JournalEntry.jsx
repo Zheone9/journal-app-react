@@ -28,8 +28,10 @@ const JournalEntry = ({ note }) => {
         <div
           className="journal__entry-picture "
           style={{
-            backgroundColor: "cover",
+            // backgroundColor: "cover",
             backgroundImage: `url(${note.url})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
           }}
         ></div>
       )}

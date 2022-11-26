@@ -38,24 +38,26 @@
   flex: 1 1 auto;
   resize: none;
 }
+.notes__image {
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
 
 .notes__image img {
   box-shadow: 5px 5px $dark-grey;
   height: 150px;
+  cursor: pointer;
 }
-// .notes__appbar {
-//   span {
-//     padding-left: 0px;
-//   }
-// }
-@media screen and (min-width: 430px) and (max-width: 660px) {
+
+@media screen and (min-width: 437px) and (max-width: 660px) {
   .notes__appbar {
     span {
       padding-left: 40px;
     }
   }
 }
-@media (max-width: 430px) {
+@media (max-width: 436px) {
   .notes__appbar {
     flex-direction: column;
     align-content: space-around;
@@ -66,4 +68,50 @@
 }
 .note-active {
   border: 4px solid $primary;
+}
+
+.icon-close-modal {
+  position: fixed;
+  font-size: 2em;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: lighten($color: $dark-grey, $amount: 20);
+  right: 6px;
+  top: 6px;
+
+  transition: color 0.7ms ease-in-out;
+  &:hover {
+    color: darken($color: $dark-grey, $amount: 0.001);
+  }
+}
+.notes__opened-image-img {
+  // max-width: 100%;
+  // display: block;
+  // height: auto;
+  // display: block;
+  // margin-left: auto;
+  // margin-right: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.notes__opened-image {
+  height: 100%;
+  width: 100%;
+}
+
+.icon-delete-image {
+  right: 0;
+  position: absolute;
+  font-size: 2em;
+  cursor: pointer;
+  color: $dark-grey;
 }

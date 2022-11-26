@@ -8,6 +8,7 @@ import { authReducer } from "../reducers/authReducer";
 import { notesReducer } from "../reducers/notesReducer";
 import { sideBarReducer } from "../reducers/sidebarReducer";
 import { uiReducer } from "../reducers/uiReducer";
+
 const reducer = combineReducers({
   auth: authReducer,
   ui: uiReducer,

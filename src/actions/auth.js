@@ -8,6 +8,7 @@ import {
 } from "../firebase/firebase-config";
 import { types } from "../types/types";
 import { finishLoading, startLoading } from "./ui";
+import { notesLogout } from "./notes";
 
 export const startLoginEmailPassword = (email, password) => {
   return (dispatch) => {
@@ -46,11 +47,7 @@ export const startGoogleLogin = () => {
       .then(({ user: { uid, displayName } }) =>
         dispatch(login(uid, displayName))
       )
-      .catch((e) => {
-        Swal.fire({
-          title: `${e}`,
-        });
-      });
+      .catch((e) => {});
   };
 };
 
@@ -68,6 +65,7 @@ export const startLogout = () => {
   return async (dispatch) => {
     await auth.signOut();
     dispatch(logout());
+    dispatch(notesLogout());
   };
 };
 

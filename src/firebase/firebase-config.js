@@ -5,21 +5,15 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  collection,
-  getDoc,
-} from "firebase/firestore";
+import { getFirestore, doc, collection } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAQUG3u1VykPP-G2rhoKEKjcxf7OkVCV8s",
-  authDomain: "react-app-9ab79.firebaseapp.com",
-  projectId: "react-app-9ab79",
-  storageBucket: "react-app-9ab79.appspot.com",
-  messagingSenderId: "691426610711",
-  appId: "1:691426610711:web:0c10da42b233eab0c21652",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 const app = initializeApp(firebaseConfig);

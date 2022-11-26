@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  ProSidebar,
-  SidebarHeader,
-  SidebarFooter,
-  SidebarContent,
-} from "react-pro-sidebar";
+import React, { useEffect } from "react";
+import { ProSidebar, SidebarHeader, SidebarContent } from "react-pro-sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import { startNewNote } from "../../actions/notes";
-import { toggleSidebar } from "../../actions/sidebar";
 import { types } from "../../types/types";
 import JournalEntries from "./JournalEntries";
 
 const SidebarPro = () => {
   const { name } = useSelector((state) => state.auth);
+
   const { toggled } = useSelector((state) => state.sidebar);
 
   const dispatch = useDispatch();

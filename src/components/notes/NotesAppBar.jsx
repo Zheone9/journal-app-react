@@ -62,15 +62,17 @@ const NotesAppBar = ({ title, body }) => {
           Picture
         </button>
         <button
-          className={canSaveNote() ? "btn btn-outline" : "btn disabled"}
+          className={
+            canSaveNote() ? "btn btn-outline btn-success" : "btn disabled"
+          }
           onClick={handleSaveNote}
           disabled={!canSaveNote()}
         >
           Save
         </button>
         {notes.length > 0 && (
-          <button className="btn btn-danger" onClick={handleNoteDelete}>
-            <b>Delete</b>
+          <button className="btn btn-danger p-se-2" onClick={handleNoteDelete}>
+            <i className="fa-solid fa-trash"></i>
           </button>
         )}
       </div>

@@ -51,25 +51,29 @@
   margin-bottom: 10px;
   overflow: hidden;
   transition: font-family 0.2ms;
-  max-height: 200px;
+  height: min-content;
   &:hover {
     cursor: pointer;
-    transform: scale(1.01);
+    opacity: 0.95;
   }
+  max-height: 100px;
 }
 .journal__sidebar-welcome {
   padding-top: 7px;
 }
 .journal__entry-picture {
-  height: 102px;
+  max-height: 100px;
   width: 75px;
 }
 .journal__entry-body {
   padding: 10px;
+  max-width: 100px;
 }
 .journal__entry-title {
+  overflow: hidden;
   font-weight: bold;
   font-size: 1.1rem;
+  max-height: 70px;
 }
 
 .journal__entry-content {
@@ -104,7 +108,6 @@
   border-radius: 60px;
 }
 
-//make responsive bars
 @media (max-width: 660px) {
   .btn-toggle {
     position: absolute;
