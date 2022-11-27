@@ -7,14 +7,27 @@ import {
 } from "firebase/auth";
 import { getFirestore, doc, collection } from "firebase/firestore";
 
-const firebaseConfig = {
-  apiKey: process.env.VITE_APIKEY,
-  authDomain: process.env.VITE_AUTH_DOMAIN,
-  projectId: process.env.VITE_PROJECTID,
-  storageBucket: process.env.VITE_STORAGEBUCKET,
-  messagingSenderId: process.env.VITE_MESSAGINGSENDERID,
-  appId: process.env.VITE_APPID,
-};
+let firebaseConfig;
+
+if (process.env.NODE_ENV === "test") {
+  firebaseConfig = {
+    apiKey: process.env.VITE_APIKEY,
+    authDomain: process.env.VITE_AUTH_DOMAIN,
+    projectId: process.env.VITE_PROJECTID,
+    storageBucket: process.env.VITE_STORAGEBUCKET,
+    messagingSenderId: process.env.VITE_MESSAGINGSENDERID,
+    appId: process.env.VITE_APPID,
+  };
+} else {
+  firebaseConfig = {
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
+  };
+}
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

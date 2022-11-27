@@ -11,9 +11,9 @@ import { finishLoading, startLoading } from "./ui";
 import { notesLogout } from "./notes";
 
 export const startLoginEmailPassword = (email, password) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(startLoading());
-    signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password)
       .then(({ user: { uid, displayName } }) => {
         dispatch(login(uid, displayName));
         dispatch(finishLoading());
@@ -30,13 +30,16 @@ export const startRegisterWithEmailAndPasswordName = (
   password,
   name
 ) => {
-  return (dispatch) => {
-    createUserWithEmailAndPassword(auth, email, password)
+  return async (dispatch) => {
+    return createUserWithEmailAndPassword(auth, email, password)
       .then(async ({ user: { uid } }) => {
         await updateProfile(auth.currentUser, { displayName: name });
         dispatch(login(uid, auth.currentUser.displayName));
       })
-      .catch((e) => Swal.fire("Error", "Email already in use", "error"));
+      .catch((e) => {
+        Swal.fire("Error", "Email already in use", "error");
+        return false;
+      });
   };
 };
 

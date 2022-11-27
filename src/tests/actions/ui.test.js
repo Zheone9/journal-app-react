@@ -5,6 +5,8 @@ import {
   startLoading,
 } from "../../actions/ui";
 import { types } from "../../types/types.js";
+import { describe, expect, test } from "vitest";
+
 describe("pruebas en ui-action", () => {
   test("Todas las acciones deben de crearse", () => {
     const action = setError("Help");

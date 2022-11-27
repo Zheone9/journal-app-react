@@ -71,7 +71,6 @@ export const startSaveNote = (note) => {
         doc(db, `${uid}/journal/notes/${note.id}`)
       );
 
-      console.log(currentNote);
       if (currentNote.exists()) {
         await updateDoc(
           doc(db, `${uid}/journal/notes/${note.id}`),
@@ -101,7 +100,6 @@ export const startSaveNote = (note) => {
         });
       }
     } catch (error) {
-      console.log(error);
       Swal.fire({
         title: "Error, please try again",
         icon: "error",

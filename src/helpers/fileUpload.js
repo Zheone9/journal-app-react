@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export const fileUpload = async (file) => {
   const cloudUrl = process.env.REACT_APP_API_CLOUDINARY;
 
