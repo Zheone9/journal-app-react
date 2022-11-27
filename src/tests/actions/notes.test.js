@@ -1,8 +1,7 @@
-import { doc, getDoc } from "firebase/firestore";
+import { describe, expect, test } from "vitest";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import { startNewNote } from "../../actions/notes";
-import { db } from "../../firebase/firebase-config";
+import { startSaveNote } from "../../actions/notes";
 import { types } from "../../types/types";
 
 const middlewares = [thunk];
@@ -20,43 +19,32 @@ const initState = {
     },
   },
 };
+
 let store = mockStore(initState);
 
-describe("pruebas en notes action", () => {
-  beforeEach(() => {
-    store = mockStore(initState);
-  });
-
-  test("debe iniciar una nueva nota", async () => {
-    await store.dispatch(startNewNote());
-    const actions = store.getActions();
-    //   console.log(actions);
-
-    expect(actions[0]).toEqual({
-      type: types.notesActive,
-      payload: {
-        id: expect.any(String),
-        title: "",
-        body: "",
-        date: expect.any(Number),
-      },
-    });
-  });
-
-  // test("debe cargar las notas", async () => {
-  //   await store.dispatch(startLoadingNotes("TESTING"));
-  // });
-
-  test("debe de actualizar la nota", async () => {
+describe("test en notes", () => {
+  test("debe actualizar la nota", async () => {
     const note = {
       id: "2gPdAKh7kbUudBpX3b4U",
-      title: "titulo",
-      body: "lorem ipsum dolor sit",
+      title: "Hola",
+      body: "Mundo",
+      date: 0,
     };
 
-    const document = await getDoc(doc(db, `TESTING/journal/notes/${note.id}`));
-
+    await store.dispatch(startSaveNote(note));
     const actions = store.getActions();
-    console.log(actions);
+    console.log(actions[0]);
+    expect(actions[0]).toEqual({
+      type: types.notesUpdated,
+      payload: {
+        id: "2gPdAKh7kbUudBpX3b4U",
+        note: {
+          id: "2gPdAKh7kbUudBpX3b4U",
+          title: "Hola",
+          body: "Mundo",
+          date: 0,
+        },
+      },
+    });
   });
 });
