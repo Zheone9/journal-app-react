@@ -14,12 +14,12 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAQUG3u1VykPP-G2rhoKEKjcxf7OkVCV8s",
-  authDomain: "react-app-9ab79.firebaseapp.com",
-  projectId: "react-app-9ab79",
-  storageBucket: "react-app-9ab79.appspot.com",
-  messagingSenderId: "691426610711",
-  appId: "1:691426610711:web:0c10da42b233eab0c21652",
+  apiKey: process.env.VITE_APIKEY,
+  authDomain: process.env.VITE_AUTH_DOMAIN,
+  projectId: process.env.VITE_PROJECTID,
+  storageBucket: process.env.VITE_STORAGEBUCKET,
+  messagingSenderId: process.env.VITE_MESSAGINGSENDERID,
+  appId: process.env.VITE_APPID,
 };
 
 const app = initializeApp(firebaseConfig);

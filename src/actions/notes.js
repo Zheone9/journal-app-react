@@ -74,14 +74,14 @@ export const startSaveNote = (note) => {
         });
         dispatch(refreshNote(note.id, noteToFirestore));
       } else {
-        const doc = await addDoc(
+        const docNote = await addDoc(
           collection(db, `${uid}/journal/notes`),
           noteToFirestore
         );
 
         dispatch(
           addNote({
-            id: doc.id,
+            id: docNote.id,
             ...noteToFirestore,
           })
         );
