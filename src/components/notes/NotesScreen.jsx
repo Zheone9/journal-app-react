@@ -6,7 +6,6 @@ import NotesAppBar from "./NotesAppBar";
 import NotesImageOpened from "./NotesImageOpened";
 import Modal from "react-modal";
 
-Modal.setAppElement("#root");
 const customStyles = {
   overlay: { zIndex: 1000000, backgroundColor: "rgba(67, 67, 67, 0.93)" },
   content: {
@@ -47,6 +46,7 @@ const NotesScreen = () => {
   return (
     <div className="notes__main-content">
       <Modal
+        appElement={document.querySelector("#root")}
         isOpen={openedImage}
         contentLabel="Example Modal"
         style={customStyles}
@@ -59,6 +59,7 @@ const NotesScreen = () => {
       <NotesAppBar title={title} body={body} />
       <div className="notes__content">
         <input
+          data-testid="inptitle"
           type="text"
           placeholder="Some awesome title"
           className="notes__title-input"
@@ -68,6 +69,7 @@ const NotesScreen = () => {
           onChange={handleInputChange}
         />
         <textarea
+          data-testid="txtarea"
           placeholder="What happened today?"
           className="notes__textarea"
           value={body}

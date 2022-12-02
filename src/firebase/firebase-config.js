@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { FirebaseError, initializeApp } from "firebase/app";
 import {
   signInWithPopup,
   getAuth,
@@ -12,7 +12,7 @@ let firebaseConfig;
 if (process.env.NODE_ENV === "test") {
   firebaseConfig = {
     apiKey: process.env.VITE_APIKEY,
-    authDomain: process.env.VITE_AUTH_DOMAIN,
+    authDomain: process.env.VITE_AUTHDOMAIN,
     projectId: process.env.VITE_PROJECTID,
     storageBucket: process.env.VITE_STORAGEBUCKET,
     messagingSenderId: process.env.VITE_MESSAGINGSENDERID,
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "test") {
 } else {
   firebaseConfig = {
     apiKey: process.env.REACT_APP_APIKEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
     projectId: process.env.REACT_APP_PROJECTID,
     storageBucket: process.env.REACT_APP_STORAGEBUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,

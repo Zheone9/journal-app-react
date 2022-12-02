@@ -50,7 +50,7 @@ const SidebarPro = () => {
               {name}
             </div>
 
-            <div onClick={handleLogout}>
+            <div onClick={handleLogout} data-testid="logout">
               <span className="text-red" style={{ cursor: "pointer" }}>
                 <i className="fa-solid fa-right-from-bracket"></i>
               </span>
@@ -60,7 +60,11 @@ const SidebarPro = () => {
       </SidebarHeader>
       <SidebarContent>
         <aside className="journal__sidebar">
-          <div className="journal__new-entry mt-5" onClick={handleAddEntry}>
+          <div
+            className="journal__new-entry mt-5"
+            onClick={handleAddEntry}
+            data-testid="newentry"
+          >
             <i className="far fa-calendar-plus fa-5x"></i>
             <p className="mt-2">New entry</p>
           </div>

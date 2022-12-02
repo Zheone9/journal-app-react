@@ -47,8 +47,12 @@ const RegisterScreen = () => {
   return (
     <div className="text-center">
       <h3 className="auth__title">Register</h3>
-      <form onSubmit={handleSubmit}>
-        {msgError && <div className="auth__alert-error">{msgError}</div>}
+      <form onSubmit={handleSubmit} data-testid="submit">
+        {msgError && (
+          <div className="auth__alert-error" data-testid="alert-error">
+            {msgError}
+          </div>
+        )}
         <input
           className="auth__input"
           type="text"
@@ -59,6 +63,7 @@ const RegisterScreen = () => {
           onChange={handleInputChange}
         />
         <input
+          data-testid="email"
           className="auth__input"
           type="text"
           name="email"

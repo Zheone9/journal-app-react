@@ -9,7 +9,6 @@ import {
 import { types } from "../../types/types";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -54,6 +53,10 @@ describe("Testing Auth actions", () => {
   });
 
   test("should start the method startLoginEmailPassword", async () => {
+    /*
+     ** a user must be created in the firestore authentication first
+     */
+
     await store.dispatch(
       startLoginEmailPassword("test@testing.com", "mipassword123")
     );

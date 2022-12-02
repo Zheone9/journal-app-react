@@ -51,13 +51,13 @@ const LoginScreen = () => {
           style={{ cursor: loading ? "not-allowed" : "pointer" }}
           className="btn btn-primary btn-block"
           type="submit"
-          onClick={() => handleGoogleLogin}
+          onClick={handleLogin}
         >
           <b>Login</b>
         </button>
 
         <div className="auth__social-network">
-          <GoogleButton onClick={() => handleGoogleLogin()} />
+          <GoogleButton className="btn-google" onClick={handleGoogleLogin} />
         </div>
         <Link className="link" to="/auth/register">
           Create new account

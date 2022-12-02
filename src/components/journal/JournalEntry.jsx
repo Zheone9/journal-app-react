@@ -19,6 +19,7 @@ const JournalEntry = ({ note }) => {
   };
   return (
     <div
+      data-testid="journal-entry"
       className={
         note.id === active?.id ? "journal__entry note-active" : "journal__entry"
       }

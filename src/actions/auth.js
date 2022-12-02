@@ -50,7 +50,9 @@ export const startGoogleLogin = () => {
       .then(({ user: { uid, displayName } }) =>
         dispatch(login(uid, displayName))
       )
-      .catch((e) => {});
+      .catch((e) => {
+        console.log(e);
+      });
   };
 };
 
